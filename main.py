@@ -9,9 +9,10 @@ class Filosofo(threading.Thread):
         self.derecha = derecha
         self.camarero = camarero
         self.estados = estados
+        self.cambios = 0  # Contador de cambios de estado
 
     def run(self):
-        while True:
+        while self.cambios < 10:  # Ejecutar hasta que se realicen 10 cambios de estado
             # Filósofo piensa
             self.estados[self.index] = "pensando"
             time.sleep(1)  # Esperar un segundo
@@ -22,7 +23,8 @@ class Filosofo(threading.Thread):
             self.derecha.acquire()
 
             # Filósofo come
-            self.estados[self.index] = "comiendo"
+            self.estados[self.index] = f"I{self.index} comiendo D{self.index}"
+            self.cambios += 1  # Incrementar el contador de cambios de estado
             time.sleep(1)  # Esperar un segundo
 
             self.derecha.release()
@@ -48,7 +50,10 @@ for i in range(5):
     filosofos.append(filosofo)
     filosofo.start()
 
-# Monitorear los estados de los filósofos
-while True:
-    time.sleep(1)  # Esperar un segundo
+# Monitorear los cambios de estado
+while any(filosofo.cambios < 10 for filosofo in filosofos):
     print("Estados de los filósofos:", estados)
+    time.sleep(1)  # Esperar un segundo antes de imprimir los estados nuevamente
+    print()  # Salto de línea
+
+print("Los filósofos han acabado la comida del restaurante")
