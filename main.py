@@ -9,12 +9,13 @@ class Filosofo(threading.Thread):
         self.derecha = derecha
         self.camarero = camarero
         self.estados = estados
-        self.cambios = 0  # Contador de cambios de estado
+        self.cambios = 1  # Contador de cambios de estado
 
     def run(self):
         while self.cambios < 10:  # Ejecutar hasta que se realicen 10 cambios de estado
             # Filósofo piensa
             self.estados[self.index] = "pensando"
+            self.cambios +=1
             time.sleep(1)  # Esperar un segundo
 
             self.camarero.acquire()  # El camarero limita la cantidad de filósofos que pueden tomar palillos
@@ -39,6 +40,7 @@ palillos = [threading.Semaphore(1) for _ in range(5)]
 camarero = threading.Semaphore(4)  # Permite que cuatro filósofos tomen palillos al mismo tiempo
 
 # Crear la lista de estados de los filósofos
+print("Nombres de los filosofos: [Socrates  ,  Platon   ,   Tales   , Heraclito , Aristoteles]")
 estados = ["pensando"] * 5
 
 # Crear los filósofos
