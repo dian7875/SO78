@@ -38,8 +38,10 @@ palillos = [threading.Semaphore(1) for _ in range(5)]
 
 # Crear el camarero (semáforo)
 camarero = threading.Semaphore(4)  # Permite que se tomen 4 palillos
-print("Nombres de los filosofos: [Socrates  ,  Platon   ,   Tales   , Heraclito , Aristoteles]") #NO ES NECESARIO solo ilustrativo
+
 # Crear la lista de estados de los filósofos
+print("Nombres de los filosofos: [Socrates  ,  Platon   ,   Tales   , Heraclito , Aristoteles]") #NO ES NECESARIO solo ilustrativo
+
 estados = ["pensando"] * 5
 
 # Crear los filósofos
