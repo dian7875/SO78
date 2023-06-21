@@ -1,0 +1,12 @@
+Cinco filósofos se sientan alrededor de una mesa redonda o rectangular y pasan su vida cenando y pensando.
+Cada filósofo tiene un plato de fideos y un palillo a la izquierda de su plato.
+Para comer los fideos son necesarios dos palilos y cada filósofo sólo puede tomar los que están a su izquierda y derecha.
+Si cualquier filósofo toma un tenedor y el otro está ocupado, se quedará esperando, con el palillo en la mano, hasta que pueda tomar el otro tenedor, para luego empezar a comer
+
+Caso A: Si dos filosofos que estan sentados a la par tratan de tomar el mismo cubierto. uno de ellos dos se queda sin cubierto y sin comer.
+Caso B: Si todos toman el cubierto a su derecha. se produce un error debido a que no hay cubiertos suficientes y cada filosodo estara en la misma situacion
+Si todos los filósofos toman el tenedor que está a su derecha al mismo tiempo, entonces todos se quedarán esperando eternamente, a esto se le llama Deadlock
+
+soluciones
+-Nombrar a un sujeto que entrege a los filosofos lo cubiertos.
+-Se puede turnar a los filosofos, con tiempo y orden para que no existan bloqueos.
